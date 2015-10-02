@@ -1,4 +1,4 @@
-FROM maven:3-jdk-7
+FROM emilianobonassi/maven:oracle-jdk-7
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app

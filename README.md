@@ -3,10 +3,10 @@ docker-maven
 
 # Supported tags and respective Dockerfile links
 
-* [jdk-7](https://github.com/carlossg/docker-maven/blob/master/jdk-7/Dockerfile)
-* [jdk-7-onbuild](https://github.com/carlossg/docker-maven/blob/master/jdk-7/onbuild/Dockerfile)
-* [latest, jdk-8](https://github.com/carlossg/docker-maven/blob/master/jdk-8/Dockerfile)
-* [onbuild, jdk-8-onbuild](https://github.com/carlossg/docker-maven/blob/master/jdk-8/onbuild/Dockerfile)
+* [oracle-jdk-7](https://github.com/emilianobonassi/docker-maven/blob/master/oracle-jdk-7/Dockerfile)
+* [oracle-jdk-7-onbuild](https://github.com/emilianobonassi/docker-maven/blob/master/oracle-jdk-7/onbuild/Dockerfile)
+* [latest, oracle-jdk-8](https://github.com/emilianobonassi/docker-maven/blob/master/oracle-jdk-8/Dockerfile)
+* [onbuild, oracle-jdk-8-onbuild](https://github.com/emilianobonassi/docker-maven/blob/master/oracle-jdk-8/onbuild/Dockerfile)
 
 # What is Maven?
 
@@ -20,7 +20,7 @@ reporting and documentation from a central piece of information.
 
 ## Create a Dockerfile in your Maven project
 
-    FROM maven:3.3-jdk-7-onbuild
+    FROM emilianobonassi/maven:oracle-jdk-8
     CMD ["do-something-with-built-packages"]
 
 Put this file in the root of your project, next to the pom.xml.
@@ -40,23 +40,4 @@ For many simple projects, you may find it inconvenient to write a complete `Dock
 In such cases, you can run a Maven project by using the Maven Docker image directly,
 passing a Maven command to `docker run`:
 
-    docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:3.3-jdk-7 mvn clean install
-
-
-# User Feedback
-
-## Issues
-
-If you have any problems with or questions about this image, please contact us
-through a [GitHub issue](https://github.com/carlossg/docker-maven/issues).
-
-You can also reach many of the official image maintainers via the `#docker-library` IRC channel on Freenode.
-
-## Contributing
-
-You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
-
-Before you start to code, we recommend discussing your plans through a [GitHub issue](https://github.com/carlossg/docker-maven/issues),
-especially for more ambitious contributions.
-This gives other contributors a chance to point you in the right direction,
-give you feedback on your design, and help you find out if someone else is working on the same thing.
+    docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven emilianobonassi/maven:oracle-jdk-8 mvn clean install
